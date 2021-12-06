@@ -1,0 +1,23 @@
+<h1></h1>
+
+<%= form_with model: @article do |form| %>
+  <div>
+    <%= form.label :Source %><br>
+    <%= form.text_field :Source %>
+  </div>
+
+  <div>
+    <%= form.label :Destination %><br>
+    <%= form.text_field :Destination %>
+  </div>
+
+   <div>
+    <%= form.label :time %><br>
+    <%= form.text_field :time %>
+  </div><br>
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>

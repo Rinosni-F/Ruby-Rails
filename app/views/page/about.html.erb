@@ -1,0 +1,40 @@
+<h1 class="text-center">BUS RESERVATION SYSTEM<h1>
+
+<div class="container mt-4">
+  <div class="row" >
+  <% @pages.each do |page| %>
+    <div class="col-4 pt-4 ">
+      <div class="card text-center pt-4"style="height:500px; width:400px;background-color:blue;" >
+        <%= page.place %><br><%=page.time %><br><%= page.amount %>
+        <br><br>
+        <input id='page' value="<%= page.id %>" hidden>
+        <%= button_tag "BOOK", type: 'button', onclick: "savePage(#{page.to_json})" %>
+         
+      </div>
+    </div>  
+  <% end %>
+  
+
+</div>
+</div>
+<script>
+
+$(document).ready(function(){
+savePage = function(page_data){
+  console.log(page_data)
+    $.ajax({
+      type:"POST",
+      url:"page/create",
+      dataType:'json',
+      data:page_data,
+      success:function(data){
+            console.log(data);
+      },
+      error:function(data){
+         console.log(data);
+      }
+    })
+ }
+
+ });
+ </script>
